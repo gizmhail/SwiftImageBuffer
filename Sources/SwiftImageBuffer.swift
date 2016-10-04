@@ -18,7 +18,7 @@ enum ImageBufferError: Error {
 
 // NSBitmapImageRep manipulation methods inspired by https://github.com/nst/BitmapCanvas
 
-class ImageBuffer {
+public class ImageBuffer {
   
     class Pixel {
         let x: Int
@@ -92,7 +92,7 @@ class ImageBuffer {
         self.init(width: Int(imageSize.width), height: Int(imageSize.height))
     }
     
-    init?(width:Int, height:Int) {
+    public init?(width:Int, height:Int) {
         let bitmapRep = NSBitmapImageRep(
             bitmapDataPlanes:nil,
             pixelsWide:width,
@@ -123,7 +123,7 @@ class ImageBuffer {
         self.context.cgContext.scaleBy(x: 1.0, y: -1.0)
     }
     
-    func save(path:String) throws {
+    public func save(path:String) throws {
         guard let data = self.bitmap.representation(using: .PNG, properties: [:]) else {
             throw ImageBufferError.SaveFail
         }
